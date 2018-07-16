@@ -8,12 +8,12 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
-
+    const speechText = "Hello, welcome to to the free code camp skill. I can tell you about recent medium articles or scheduled live streams. What would you like?";
+    let reprompt = `What would you like?`;
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Free Code Camp', speechText)
       .getResponse();
   },
 };
