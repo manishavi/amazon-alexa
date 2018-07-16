@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = "Hello, welcome to to the free code camp skill. I can tell you about recent medium articles or scheduled live streams. What would you like?";
+    const speechText = 'Hello, welcome to to the free code camp skill. I can tell you about recent medium articles or scheduled live streams. What would you like?';
     let reprompt = `What would you like?`;
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -16,6 +16,23 @@ const LaunchRequestHandler = {
       .withSimpleCard('Free Code Camp', speechText)
       .getResponse();
   },
+};
+
+const RecentArticlesIntentHandler = {
+  canHandle(handlerInput) {
+    return (
+      handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'RecentArticleIntent'
+    );
+  },
+  handle(handlerInput) {
+    let speechText = 'When this done I\'ll read back recent articles';
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .withSimpleCard('Articles', speechText)
+      .getResponse();
+  }
 };
 
 const HelloWorldIntentHandler = {
@@ -95,6 +112,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
+    RecentArticlesIntentHandler,
     HelloWorldIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
