@@ -34,6 +34,17 @@
             "say hello",
             "say hello world"
           ]
+        },
+        {
+          "name": "RecentArticlesIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "what's been posted on medium?",
+            "any new medium post",
+            "medium post"
+          ]
         }
       ]
     }
